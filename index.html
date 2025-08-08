@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       background: url('album.jpg') no-repeat center center fixed;
@@ -42,6 +43,13 @@
     .square-2 { top: 70%; right: 15%; animation-duration: 20s; animation-direction: reverse; }
     .square-3 { bottom: 20%; left: 20%; animation-duration: 18s; }
     .square-4 { top: 30%; right: 25%; animation-duration: 25s; animation-direction: reverse; }
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+      opacity: 1 !important;
+    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
@@ -67,8 +75,21 @@
     </ul>
   </div>
 
+  <!-- Social Media Links -->
+  <div class="mt-8 flex space-x-6 z-10">
+    <a href="https://open.spotify.com/artist/2HNmvMwxiRhDpaj7MIRHcu" target="_blank" class="social-icon text-3xl opacity-80 hover:opacity-100">
+      <i class="fab fa-spotify"></i>
+    </a>
+    <a href="https://youtube.com/@DjThomAfso" target="_blank" class="social-icon text-3xl opacity-80 hover:opacity-100">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://linktr.ee/DjThomAfso" target="_blank" class="social-icon text-3xl opacity-80 hover:opacity-100">
+      <i class="fas fa-tree"></i>
+    </a>
+  </div>
+
   <script>
-    const releaseDate = new Date("2025-09-19T00:00:00Z").getTime();
+    const releaseDate = new Date("2025-09-19T21:00:00Z").getTime();
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
