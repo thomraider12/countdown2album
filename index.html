@@ -1,46 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DjThomAfso - Under Construction</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .hero {
-            background-image: url('https://images.unsplash.com/photo-1529678407585-55ac0053aa47?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summereo – DjThomAfso</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('album.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(13, 13, 13, 0.85);
+      z-index: -1;
+    }
+    .rotating-square {
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      position: absolute;
+      animation: rotate 12s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .square-1 { top: 20%; left: 10%; animation-duration: 15s; }
+    .square-2 { top: 70%; right: 15%; animation-duration: 20s; animation-direction: reverse; }
+    .square-3 { bottom: 20%; left: 20%; animation-duration: 18s; }
+    .square-4 { top: 30%; right: 25%; animation-duration: 25s; animation-direction: reverse; }
+  </style>
 </head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+  <!-- Rotating squares -->
+  <div class="rotating-square square-1"></div>
+  <div class="rotating-square square-2"></div>
+  <div class="rotating-square square-3"></div>
+  <div class="rotating-square square-4"></div>
 
-<body>
-    <div class="hero h-screen flex items-center justify-center text-white">
-        <div class="overlay absolute inset-0"></div>
-        <div class="text-center">
-            <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-4">DjThomAfso</h1>
-            <p class="text-lg md:text-xl lg:text-2xl">Under Construction</p>
-            <p class="text-lg md:text-xl lg:text-2xl mb-8">I'll be back soon!</p>
-            <div class="flex justify-center">
-                <a href="#" class="text-3xl mr-4"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-3xl mr-4"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-3xl"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </div>
+  <div class="text-center mb-8 z-10">
+    <h1 class="text-4xl font-bold mb-2" style="font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 1px;">COUNTDOWN FOR ALBUM PREMIERE</h1>
+    <div id="countdown" class="text-6xl mt-6 mb-8" style="font-family: 'Major Mono Display', monospace; letter-spacing: -2px;"></div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
+  <div class="text-center bg-black bg-opacity-60 p-8 rounded-lg backdrop-blur-sm z-10 max-w-md">
+    <h2 class="text-4xl mb-4" style="font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 2px;">SUMMEREO</h2>
+    <p class="text-xl mb-6 tracking-widest opacity-90">DJTHOMAFSO</p>
+    <ul class="text-lg space-y-3" style="font-family: 'Space Grotesk', sans-serif;">
+      <li class="py-2 border-b border-white border-opacity-20">1. FRACUSK</li>
+      <li class="py-2 border-b border-white border-opacity-20">2. NEUROTIDE</li>
+      <li class="py-2 border-b border-white border-opacity-20">3. CHILLIBEES</li>
+      <li class="py-2">4. AURALISORA</li>
+    </ul>
+  </div>
+
+  <script>
+    const releaseDate = new Date("2025-09-19T00:00:00Z").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = releaseDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "AVAILABLE NOW ON SPOTIFY AND YT!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
-
 </html>
